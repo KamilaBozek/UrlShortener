@@ -2,7 +2,7 @@
 UrlShortener - N-ix task
 
 ## How to start?
- Before firt start of the application you have to run 'database-update' command.
+ Before firt start of the application you have to run `'database-update'` command.
 
 ## Key assumptions 
 UrlShortener is a web-application that allows user to quickly replace any long url with its shortened version. 
