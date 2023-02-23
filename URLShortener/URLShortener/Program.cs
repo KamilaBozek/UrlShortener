@@ -1,4 +1,6 @@
+using NLog.Web;
 using URLShortener.Entities;
+using URLShortener.Middleware;
 using URLShortener.Services;
 
 var MyAllowSpecificOrigins = "MyAllowSpecificOrigins";
@@ -23,6 +25,8 @@ builder.Services.AddDbContext<ShortUrlDbContext>();
 builder.Services.AddScoped<IUrlService, UrlService>();
 builder.Services.AddSingleton<IUrlConverterService, UrlConverterService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
+builder.Host.UseNLog();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -35,6 +39,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

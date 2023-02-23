@@ -27,7 +27,7 @@ namespace URLShortener.Services
             }
             if (!Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
             {
-                throw new InvalidDataException("Incorrect url");
+                throw new BadRequestException("Incorrect url");
             }
 
             var shortUrl = new ShortUrl()

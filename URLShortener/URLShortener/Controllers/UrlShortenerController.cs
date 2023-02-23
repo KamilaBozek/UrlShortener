@@ -31,7 +31,7 @@ namespace URLShortener.Controllers
             return Ok(allUrls);
         }
 
-        [HttpGet("urlShortener/{shortUrl}")]
+        [HttpGet("/{shortUrl}")]
         public ActionResult RedirectToLongUrl( string shortUrl)
         {
             var longUrl = _urlShortenerService.GetUrlByShortUrl(shortUrl);
